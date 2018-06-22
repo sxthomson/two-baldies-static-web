@@ -21,9 +21,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = {
   
   entry: {
-    app: ['./src/js/app.js', './src/scss/app.scss'],
-    bootstrap: './src/scss/bootstrap/bootstrap.scss',
-    vendors: ['bootstrap','jquery'],
+    app: ['./src/js/app.js', './src/scss/app.scss']
   },
   output: {
     filename: 'js/[name].js',
@@ -107,7 +105,7 @@ const config = {
       template: 'src/index.html',
       hash: true,
       chunksSortMode: 'manual', // Use order of array below
-      chunks: ['vendors','bootstrap','app']
+      chunks: ['app']
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',

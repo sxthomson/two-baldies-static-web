@@ -1,0 +1,9 @@
+@import '../base/vars';
+@import 'node_modules/bootstrap/scss/mixins/grid';
+
+.hero-container {     
+    @include make-container();
+    @include make-container-max-widths($hero-container-max-widths);
+    height: 200px;
+    background-color: $white;
+}

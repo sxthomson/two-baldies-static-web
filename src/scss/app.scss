@@ -10,7 +10,17 @@
 /* Mixins, helpers and functions */
 @import 'base/mixins';
 
+/* Bootstrap */
+@import 'bootstrap/bootstrap';
+
 /* Animated Ticker */
 @import 'components/ticker';
 
-@import 'components/navigation'
+/* Nav Bar */
+@import 'components/navigation';
+
+/* Background Image */
+@import 'components/background';
+
+/* Hero */
+@import 'components/hero';

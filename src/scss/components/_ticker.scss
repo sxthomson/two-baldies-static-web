@@ -4,17 +4,6 @@
 @import '../base/vars';
 @import '../base/fonts';
 
-$ticker-span-size: 756.42px;
-$ticker-span-margin: 32px;
-
-/* Don't use rem here as we want the same size across all viewports */
-
-$ticker-span-line-height: 88px;
-$ticker-span-font-size: 94px;
-
-$ticker-total-width: (4 * $ticker-span-size) + (3 * $ticker-span-margin);
-$ticker-total-offset: ($ticker-span-size + $ticker-span-margin) * -1;
-
 .ticker-container {
     width: 100%;
     overflow: hidden;
@@ -23,26 +12,27 @@ $ticker-total-offset: ($ticker-span-size + $ticker-span-margin) * -1;
         height: $ticker-span-line-height;
         width: $ticker-total-width;
         margin-bottom: 5px;
+        overflow-y: hidden;
         font-size: 0; /* Fix the inline-block spacing */
         span {
+            @include text-stroke($white, $black, 2px, $black);
+            @include no-select;
             display: inline-block;
             margin-right: $ticker-span-margin;
-            @include text-stroke($white, $black, 2px, $black);
             font-family: $josefin-slab;
             font-weight: $josefin-slab-bold-weight;
             font-style: italic;            
             line-height: $ticker-span-line-height;
             font-size: $ticker-span-font-size;
-            @include no-select
         }
         &-left {
             :first-child {
-                @include animation('ticker-left 7s linear infinite')
+                @include animation('ticker-left 7s linear infinite');
             }
         }
         &-right {
             :first-child {
-                @include animation('ticker-right 7s linear infinite')
+                @include animation('ticker-right 7s linear infinite');
             }
         }
     }

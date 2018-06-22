@@ -6,8 +6,25 @@
 /* Breakpoints */
 /* Paths */
 /* Grid setup */
+
+
+
 /* Colour palette */
 $black: #000;
 $white: #fff;
 
+/* Z-Indexes */
+$background-z-index: -1;
+
 /* Components */
+
+$hero-container-max-widths: ( xs: 312px, sm: 312px, md: 600px, lg: 600px, xl: 800px);
+
+$ticker-span-size: 756.42px;
+$ticker-span-margin: 32px;
+/* Don't use rem here as we want the same size across all viewports */
+
+$ticker-span-line-height: 88px;
+$ticker-span-font-size: 94px;
+$ticker-total-width: (4 * $ticker-span-size)+(3 * $ticker-span-margin);
+$ticker-total-offset: ($ticker-span-size + $ticker-span-margin) * -1;
