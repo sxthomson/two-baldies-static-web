@@ -6,7 +6,8 @@ process.noDeprecation = true;
 
 const localServer = {
   path: 'localhost/',
-  port: 3000
+  port: 3000,
+  proxyPort: 3100
 };
 
 const path = require('path');
@@ -15,12 +16,14 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require('webpack-uglifyes-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
+  
   entry: {
     app: ['./src/js/app.js', './src/scss/app.scss'],
-    bootstrap: './src/scss/bootstrap.scss'
+    bootstrap: './src/scss/bootstrap/bootstrap.scss',
+    vendors: ['bootstrap','jquery'],
   },
   output: {
     filename: 'js/[name].js',
@@ -63,11 +66,20 @@ const config = {
       }
     ]
   },
+  devServer: {
+    contentBase: __dirname + '/src',
+    port: localServer.proxyPort
+  },
   plugins: [
     new ExtractTextPlugin('css/[name].css'),
     new BrowserSyncPlugin({
-      proxy: localServer.path,
+      // browse to http://localhost:3000/ during development
+      host: localServer.path,
       port: localServer.port,
+      // proxy the Webpack Dev Server endpoint
+      // (which should be serving on http://localhost:3100/)
+      // through BrowserSync
+      proxy: 'http://localhost:3100/',
       files: [],
       ghostMode: {
         clicks: false,
@@ -78,15 +90,25 @@ const config = {
       injectChanges: true,
       logFileChanges: true,
       logLevel: 'debug',
-      logPrefix: 'wepback',
+      logPrefix: 'webpack',
       notify: true,
       reloadDelay: 0
+    },
+    // plugin options
+    {
+      // prevent BrowserSync from reloading the page
+      // and let Webpack Dev Server take care of this
+      reload: false
+    }
+  
+  ),
+    new HtmlWebpackPlugin({  // Also generate a test.html
+      filename: 'index.html',
+      template: 'src/index.html',
+      hash: true,
+      chunksSortMode: 'manual', // Use order of array below
+      chunks: ['vendors','bootstrap','app']
     }),
-    new CopyWebpackPlugin([{
-        from: '**/*.html',
-        context: 'src/'
-      }
-    ]),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',

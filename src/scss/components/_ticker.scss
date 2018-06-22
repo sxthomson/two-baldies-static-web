@@ -17,13 +17,12 @@ $ticker-total-offset: ($ticker-span-size + $ticker-span-margin) * -1;
 
 .ticker-container {
     width: 100%;
-    margin-top: 100px;  
-    overflow-x: hidden;     
+    overflow: hidden;
+    margin: 10px auto; 
     .ticker {
         height: $ticker-span-line-height;
         width: $ticker-total-width;
         margin-bottom: 5px;
-        overflow-y: hidden;
         font-size: 0; /* Fix the inline-block spacing */
         span {
             display: inline-block;
