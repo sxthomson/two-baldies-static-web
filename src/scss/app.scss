@@ -7,6 +7,9 @@
 /* Fonts */
 @import 'base/fonts';
 
+/* Typography */
+@import 'base/typography';
+
 /* Mixins, helpers and functions */
 @import 'base/mixins';
 
@@ -24,3 +27,6 @@
 
 /* Hero */
 @import 'components/hero';
+
+/* Product Grid  */
+@import 'components/productRow';

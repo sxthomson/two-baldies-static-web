@@ -1,7 +1,12 @@
+@import 'mixins';
 /**
  * Fonts
 */
+
 @import url('https://fonts.googleapis.com/css?family=Josefin+Slab:400,700,700i');
 
-$josefin-slab: 'Josefin Slab', serif;
-$josefin-slab-bold-weight: 700;
+@include font-face(Avenir-Black, '../fonts/Avenir/Avenir-Black', null, null, svg eot woff ttf);
+@include font-face(Avenir-Book, '../fonts/Avenir/Avenir-Book', null, null, svg eot woff ttf);
+@include font-face(Avenir-Heavy, '../fonts/Avenir/Avenir-Heavy', null, null, svg eot woff ttf);
+@include font-face(Avenir-Light, '../fonts/Avenir/Avenir-Light', null, null, svg eot woff ttf);
+@include font-face(Avenir-Medium, '../fonts/Avenir/Avenir-Medium', null, null, svg eot woff ttf);

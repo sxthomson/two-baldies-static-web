@@ -1,0 +1,72 @@
+@import '../base/vars';
+@import '../base/mixins';
+
+.background-product-chocolate {
+    background-color: $color-product-chocolate;
+};
+
+.background-product-classic {
+    background-color: $color-product-classic;
+};
+.background-product-fruit {
+    background-color: $color-product-fruit;
+};
+.background-product-harissa {
+    background-color: $color-product-harissa;
+};
+.background-product-bbq {
+    background-color: $color-product-bbq;
+};
+
+
+.product-container {     
+    @include make-container();
+    @include fix-inline-block-spacing;
+    @include margin-top-bottom($gutter);
+    @include media-breakpoint-up(xl) {
+        display: flex;
+        overflow-x: hidden;
+    }
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    .product-item {
+        @include media-breakpoint-up(lg) {
+            width: $product-item-width-lg;
+        }
+        @include media-breakpoint-up(xl) {
+            flex-grow: 1;
+        }
+        width: $product-item-width;
+        display: inline-block;
+        vertical-align: top;
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+        .product-image {
+            width: 100%;
+        };
+        .product-title {
+            @include media-breakpoint-up(md) {
+                font-size: $product-row-title-font-size-md;
+            }
+            font-size: $product-row-title-font-size;
+            height: $product-row-title-height;
+            padding: $product-row-title-padding;         
+            font-size: $product-row-title-font-size;      
+            line-height: $product-row-title-height - (2 * $product-row-title-padding);
+            text-align: center;
+            white-space: normal;
+            color: $white;
+            > p {
+                margin-bottom: 0;
+                display: inline-block;
+                vertical-align: middle;
+                line-height: normal;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,15 @@
+@import 'vars';
+
+@mixin brand-font {
+    font-family: $josefin-slab;
+}
+
+@mixin brand-font-bold {
+    @include brand-font;
+    font-weight: $josefin-slab-bold-weight;
+}
+
+@mixin brand-font-bold-italic {
+    @include brand-font-bold;
+    font-style: italic;
+}

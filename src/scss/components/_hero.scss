@@ -1,9 +1,20 @@
 @import '../base/vars';
-@import 'node_modules/bootstrap/scss/mixins/grid';
 
 .hero-container {     
     @include make-container();
     @include make-container-max-widths($hero-container-max-widths);
-    height: 200px;
+    @include box-shadow(0 -2px 4px -1px $grey-shadow);
+    @include make-paddings($hero-container-paddings);
+    @include margin-top-bottom($gutter);
     background-color: $white;
+
+    .hero-subtitle {
+        @include brand-font-bold;
+        @include media-breakpoint-up(md) {
+            font-size: $hero-subtitle-font-size-md;
+        }
+        font-size: $hero-subtitle-font-size;
+        text-align: center;
+        margin: 2rem auto 0 auto;
+    }
 }

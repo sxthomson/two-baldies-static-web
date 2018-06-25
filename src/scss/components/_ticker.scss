@@ -2,26 +2,25 @@
  * Ticker
 */
 @import '../base/vars';
-@import '../base/fonts';
+@import '../base/mixins';
+@import '../base/typography';
 
 .ticker-container {
+    @include margin-top-bottom($gutter);
     width: 100%;
     overflow: hidden;
-    margin: 10px auto; 
     .ticker {
+        @include fix-inline-block-spacing;
         height: $ticker-span-line-height;
         width: $ticker-total-width;
         margin-bottom: 5px;
         overflow-y: hidden;
-        font-size: 0; /* Fix the inline-block spacing */
         span {
+            @include brand-font-bold-italic;
             @include text-stroke($white, $black, 2px, $black);
             @include no-select;
             display: inline-block;
             margin-right: $ticker-span-margin;
-            font-family: $josefin-slab;
-            font-weight: $josefin-slab-bold-weight;
-            font-style: italic;            
             line-height: $ticker-span-line-height;
             font-size: $ticker-span-font-size;
         }

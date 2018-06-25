@@ -1,4 +1,5 @@
 @import '../base/vars';
+@import '../base/mixins';
 
 .background-container {
     position: absolute;
@@ -6,4 +7,8 @@
     top: 0;
     width: 100%;
     z-index: $background-z-index;
+}
+
+.background-push-down {
+    @include make-margin-tops($background-push-down-margin-tops);
 }

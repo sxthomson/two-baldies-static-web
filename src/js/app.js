@@ -1,8 +1,9 @@
 import 'bootstrap';
-import { showElementWhenScrolled } from './index/navbar-show';
+import { showElementWhenScrolledPastBreakpoint } from './index/showElementWhenScrolledPastBreakpoint';
 
 $(document).ready(() => {
     const $navbar = $('.navbar');
-    //showElementWhenScrolled($navbar, 100);
+    const $heroContainer = $('.hero-container');
+    showElementWhenScrolledPastBreakpoint($navbar, $heroContainer);
 });
 
