@@ -17,9 +17,10 @@ const UglifyJSPlugin = require('webpack-uglifyes-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
-  
+
   entry: {
     app: ['./src/js/app.js', './src/scss/app.scss']
   },
@@ -28,8 +29,7 @@ const config = {
     path: path.resolve(__dirname, 'dist')
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -45,23 +45,26 @@ const config = {
         }
       },
       {
-        test: /\.(png|gif|jpg|jpeg)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {name: 'images/[name].[hash:6].[ext]', publicPath: '../', limit: 8192}
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8000, // Convert images < 8kb to base64 strings
+            name: 'images/[hash]-[name].[ext]'
           }
-        ]
+        }]
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {name: 'fonts/[name].[hash:6].[ext]', publicPath: '../', limit: 8192}
+        use: [{
+          loader: 'url-loader',
+          options: {
+            name: 'fonts/[name].[hash:6].[ext]',
+            publicPath: '../',
+            limit: 8192
           }
-        ]
-      }
+        }]
+      },
     ]
   },
   devServer: {
@@ -70,37 +73,43 @@ const config = {
   },
   plugins: [
     new ExtractTextPlugin('css/[name].css'),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/images',
+        to: 'images'
+      } 
+    ]), 
     new BrowserSyncPlugin({
-      // browse to http://localhost:3000/ during development
-      host: localServer.path,
-      port: localServer.port,
-      // proxy the Webpack Dev Server endpoint
-      // (which should be serving on http://localhost:3100/)
-      // through BrowserSync
-      proxy: 'http://localhost:3100/',
-      files: [],
-      ghostMode: {
-        clicks: false,
-        location: false,
-        forms: false,
-        scroll: false
+        // browse to http://localhost:3000/ during development
+        host: localServer.path,
+        port: localServer.port,
+        // proxy the Webpack Dev Server endpoint
+        // (which should be serving on http://localhost:3100/)
+        // through BrowserSync
+        proxy: 'http://localhost:3100/',
+        files: [],
+        ghostMode: {
+          clicks: false,
+          location: false,
+          forms: false,
+          scroll: false
+        },
+        injectChanges: true,
+        logFileChanges: true,
+        logLevel: 'debug',
+        logPrefix: 'webpack',
+        notify: true,
+        reloadDelay: 0
       },
-      injectChanges: true,
-      logFileChanges: true,
-      logLevel: 'debug',
-      logPrefix: 'webpack',
-      notify: true,
-      reloadDelay: 0
-    },
-    // plugin options
-    {
-      // prevent BrowserSync from reloading the page
-      // and let Webpack Dev Server take care of this
-      reload: false
-    }
-  
-  ),
-    new HtmlWebpackPlugin({  // Also generate a test.html
+      // plugin options
+      {
+        // prevent BrowserSync from reloading the page
+        // and let Webpack Dev Server take care of this
+        reload: false
+      }
+
+    ),
+    new HtmlWebpackPlugin({ // Also generate a test.html
       filename: 'index.html',
       template: 'src/index.html',
       hash: true,
