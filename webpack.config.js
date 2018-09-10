@@ -111,7 +111,8 @@ const config = {
       $: 'jquery',
       jQuery: 'jquery',
       'window.jquery': 'jquery',
-      Popper: ['popper.js', 'default']
+      Popper: ['popper.js', 'default'],
+      '_': 'lodash'
     })
   ]
 };

@@ -23,7 +23,7 @@
     @include make-container();
     @include fix-inline-block-spacing;
     @include margin-top-bottom($gutter);
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
         display: flex;
         overflow-x: hidden;
     }
@@ -43,19 +43,18 @@
         display: inline-block;
         vertical-align: top;
         &:not(:last-child) {
-            margin-right: 1rem;
+            margin-right: ($gutter / 2);
         }
         .product-image {
             width: 100%;
         };
         .product-title {
-            @include media-breakpoint-up(md) {
-                font-size: $product-row-title-font-size-md;
+            @include media-breakpoint-up(xl) {
+                font-size: $product-row-title-font-size-xl;
             }
             font-size: $product-row-title-font-size;
             height: $product-row-title-height;
-            padding: $product-row-title-padding;         
-            font-size: $product-row-title-font-size;      
+            padding: $product-row-title-padding;
             line-height: $product-row-title-height - (2 * $product-row-title-padding);
             text-align: center;
             white-space: normal;

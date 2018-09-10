@@ -41,10 +41,10 @@ $hero-subtitle-font-size-md: 2rem;
 /* Product Row */
 $product-item-width-lg: 400px;
 $product-item-width: 300px;
-$product-row-title-height: 120px;
-$product-row-title-font-size: 1.25rem;
-$product-row-title-font-size-md: 1.5rem;
-$product-row-title-padding: $gutter / 2;
+$product-row-title-height: 80px;
+$product-row-title-font-size: 1rem;
+$product-row-title-font-size-xl: 1.25rem;
+$product-row-title-padding: 10px;
 
 /* Ticker */
 $ticker-span-size: 756.42px;
@@ -55,3 +55,25 @@ $ticker-span-line-height: 88px;
 $ticker-span-font-size: 94px;
 $ticker-total-width: (4 * $ticker-span-size)+(3 * $ticker-span-margin);
 $ticker-total-offset: ($ticker-span-size + $ticker-span-margin) * -1;
+
+/* Instagram */
+$instagram-photo-row-count-lg: 6;
+$instagram-photo-row-count-md: 4;
+$instagram-photo-row-count-sm: 2;
+$instagram-photo-row-count-xs: 2;
+
+$instagram-btn-font-size: 1rem;
+$instagram-btn-font-size-sm: 1.5rem;
+$instagram-btn-padding-x: 44px;
+$instagram-btn-padding-y: 20px; 
+
+/* Overlapped Section */
+
+$overlapped-section-content-font-size: 1rem;
+$overlapped-section-content-font-size-xl: 1.25rem;
+
+$overlapped-section-width-md: 85%;
+$overlapped-section-width-lg: 65%;
+
+$overlapped-section-content-offset-md: 300px;
+$overlapped-section-content-offset-lg: 200px;

@@ -1,0 +1,78 @@
+@import '../base/vars';
+@import '../base/mixins';
+
+.overlapped-section-container {
+  @include media-breakpoint-up(md) {
+    flex-wrap: wrap;
+  }
+
+  flex-direction: column;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 700px;
+
+  .overlapped-section {
+    &.section-image {
+      @include media-breakpoint-up(md) {
+        width: $overlapped-section-width-md;
+      }
+
+      @include media-breakpoint-up(lg) {
+        width: $overlapped-section-width-lg;
+      }
+    }
+
+    width: 100%;
+    margin-left: 0;
+    background-color: $white;
+
+    p {
+      @include media-breakpoint-up(xl) {
+        font-size: $overlapped-section-content-font-size-xl;
+      }
+
+      font-size: $overlapped-section-content-font-size;
+    }
+  }
+
+  .section-image {
+    @include media-breakpoint-up(md) {
+      order: 1;
+    }
+
+    order: 2;
+
+    .image {
+      width: 100%;
+    }
+  }
+
+  .section-content {
+    @include media-breakpoint-up(md) {
+      width: calc((100% - #{$overlapped-section-width-md}) + #{$overlapped-section-content-offset-md});
+      margin-left: -$overlapped-section-content-offset-md;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: calc((100% - #{$overlapped-section-width-lg}) + #{$overlapped-section-content-offset-lg});
+      margin-left: -$overlapped-section-content-offset-lg;
+    }
+
+    padding: $gutter;
+
+    &-1 {
+      @include media-breakpoint-up(md) {
+        order: 2;
+      }
+
+      order: 1;
+      padding-bottom: 0;
+    }
+
+    &-2 {
+      order: 3;
+      padding-top: 0;
+      padding-bottom: $gutter / 2;
+    }
+  }
+}

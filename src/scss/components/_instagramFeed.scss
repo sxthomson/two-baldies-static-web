@@ -1,0 +1,45 @@
+@import '../base/vars';
+@import '../base/mixins';
+
+.instagram-feed-container {
+    padding-right: ($gutter - ($gutter / 4));
+    padding-left: ($gutter - ($gutter / 4));
+    margin-bottom: $gutter;
+    .instagram-feed {     
+        .instagram-photo {
+            padding-right: ($gutter / 4);
+            padding-left: ($gutter / 4);
+            margin-bottom: ($gutter / 2);
+            .square {
+                position: relative;
+                overflow: hidden;
+                padding-bottom: 100%;            
+                > img {
+                    position: absolute;
+                }
+            }       
+        }
+    }
+    .instagram-btn-container {
+        @include media-breakpoint-up(md) {
+            margin-top: ($gutter / 2);
+        }
+        padding-right: ($gutter / 4);
+        padding-left: ($gutter / 4);
+        .instagram-btn {
+            @include media-breakpoint-up(sm) {
+                font-size: $instagram-btn-font-size-sm;
+            }
+            @include media-breakpoint-down(sm) {
+                display: block;
+                width: 100%;
+            }
+            @include brand-font-bold;
+            @include button-variant($white, $black);
+            @include button-outline-variant($black, $white);
+            @include button-size($instagram-btn-padding-y, $instagram-btn-padding-x, $instagram-btn-font-size, 1, 0);
+            padding-bottom: ($instagram-btn-padding-y - 4); //Weird issue with the font itself
+            font-size: $instagram-btn-font-size;
+        }
+    }
+}
