@@ -25,8 +25,9 @@ $(document).ready(() => {
             $('.instagram-photo').slice(4).addClass('d-none d-xl-block');
         }
     });
+});
 
-
+$(window).on("load", function() {
     const $overlappedSectionImage = $('.overlapped-section.section-image');
     const $overlappedSectionContent = $('.overlapped-section.section-content');
     const $overlappedWrapper = $('.overlapped-section-container');
