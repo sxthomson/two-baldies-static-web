@@ -51,6 +51,7 @@
     @include media-breakpoint-up(md) {
       width: calc((100% - #{$overlapped-section-width-md}) + #{$overlapped-section-content-offset-md});
       margin-left: -$overlapped-section-content-offset-md;
+      padding: $gutter;
     }
 
     @include media-breakpoint-up(lg) {
@@ -58,21 +59,22 @@
       margin-left: -$overlapped-section-content-offset-lg;
     }
 
-    padding: $gutter;
+    padding: $gutter / 2;
 
     &-1 {
       @include media-breakpoint-up(md) {
+        padding-bottom: 0;
         order: 2;
       }
-
       order: 1;
-      padding-bottom: 0;
     }
 
     &-2 {
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+        padding-bottom: $gutter / 2;
+      }
       order: 3;
-      padding-top: 0;
-      padding-bottom: $gutter / 2;
     }
   }
 }

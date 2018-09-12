@@ -1,7 +1,7 @@
 export const keepContentInMiddle = ($element, $elementsToCenter) => {
     const $window = $(window);
     
-    changeMarginTop($element, $elementsToCenter);
+    changeMarginTop($element, $elementsToCenter, $window.outerWidth());
 
     $window.resize(() => {
         changeMarginTop($element, $elementsToCenter, $window.outerWidth());
