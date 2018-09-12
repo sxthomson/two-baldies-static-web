@@ -6,7 +6,10 @@
 @import '../base/typography';
 
 .ticker-container {
-    @include margin-top-bottom($gutter * 2);
+    @include media-breakpoint-up(md) {
+        @include margin-top-bottom($gutter * 2);
+    }
+    @include margin-top-bottom($gutter);
     width: 100%;
     overflow: hidden;
     .ticker {
