@@ -20,7 +20,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
-
   entry: {
     app: ['./src/js/app.js', './src/scss/app.scss']
   },
@@ -109,10 +108,10 @@ const config = {
       }
 
     ),
-    new HtmlWebpackPlugin({ // Also generate a test.html
+    new HtmlWebpackPlugin({ // Also generate a test.html and inject in our assets
       filename: 'index.html',
       template: 'src/index.html',
-      hash: true,
+      hash: true, //Add hash to links for browser cache invalidation on update
       chunksSortMode: 'manual', // Use order of array below
       chunks: ['app']
     }),
