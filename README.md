@@ -25,5 +25,5 @@
 * _CSS_ files are located under `/dist/css/`
 * _JavaScript_ files with support of _ES6_ files are located under `/dist/js/`
 * _Images_ are located in `/dist/images/`
-    * Any images under 8kb will be base64 encoded and have the src replaced within CSS and the HTML through url-loader in webpack
+    * Any images under 8kb will be base64 encoded and have the src replaced within CSS and the HTML through url-loader
 * _Fonts_ are located in `/dist/fonts/`
