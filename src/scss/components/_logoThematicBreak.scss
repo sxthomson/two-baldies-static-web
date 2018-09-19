@@ -1,0 +1,11 @@
+@import '../base/assetHelpers';
+@import '../base/vars';
+@import '../base/mixins';
+
+hr.logo {
+    @include margin-top-bottom($gutter * 2);
+    display: block;
+    border: 0px;
+    height: $logo-hr-height;
+    background: image('two-baldies-icon.svg') no-repeat center;
+}
