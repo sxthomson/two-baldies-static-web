@@ -17,7 +17,10 @@ const UglifyJSPlugin = require('webpack-uglifyes-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const DIST_PATH = path.resolve(__dirname, 'dist');
+
+const ASSET_PATH = '/';
 
 const config = {
   entry: {
@@ -25,7 +28,7 @@ const config = {
   },
   output: {
     filename: 'js/[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: DIST_PATH
   },
   module: {
     rules: [{
@@ -45,39 +48,36 @@ const config = {
       },
       {
         test: /\.(png|jp(e*)g|svg|gif)$/,
+        include: path.resolve(__dirname, 'src/images'),
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 8000, // Convert images < 8kb to base64 strings
-            name: 'images/[hash]-[name].[ext]'
+            name: 'images/[name].[hash:6].[ext]',
+            limit: 8192, // Convert images < 8kb to base64 strings
+            publicPath: ASSET_PATH,
           }
         }]
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
+        include: path.resolve(__dirname, 'src/fonts'),
         use: [{
           loader: 'url-loader',
           options: {
             name: 'fonts/[name].[hash:6].[ext]',
-            publicPath: '../',
-            limit: 8192
+            limit: 8192,
+            publicPath: ASSET_PATH,
           }
         }]
       },
     ]
   },
   devServer: {
-    contentBase: __dirname + '/src',
+    contentBase: path.resolve(__dirname, 'src'),
     port: localServer.proxyPort
   },
   plugins: [
     new ExtractTextPlugin('css/[name].css'),
-    new CopyWebpackPlugin([
-      {
-        from: 'src/images',
-        to: 'images'
-      } 
-    ]), 
     new BrowserSyncPlugin({
         // browse to http://localhost:3000/ during development
         host: localServer.path,
