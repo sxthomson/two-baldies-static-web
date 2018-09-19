@@ -9,17 +9,17 @@ export const keepContentInMiddle = ($element, $elementsToCenter) => {
 };
 
 const changeMarginTop = ($element, $elementsToCenter, windowWidth) => {
-    const outerHeight = $element.outerHeight();   
+    const innerHeight = $element.outerHeight();   
     if (windowWidth < 768) {
         $($elementsToCenter[0]).css('margin-top', 'inherit');
     } else {
         let currentHeight = 0;
 
         $elementsToCenter.each(index => {
-            currentHeight += $($elementsToCenter[index]).outerHeight();
+            currentHeight += $elementsToCenter[index].clientHeight;
         });
     
-        const marginTopPx = (outerHeight - currentHeight) / 2;
+        const marginTopPx = (innerHeight - currentHeight) / 2;
         $($elementsToCenter[0]).css('margin-top', marginTopPx);
     }
 };
