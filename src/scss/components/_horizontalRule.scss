@@ -1,0 +1,12 @@
+@import '../base/assetHelpers';
+@import '../base/vars';
+@import '../base/mixins';
+
+hr {
+    @include media-breakpoint-up(xl) {
+        width: $hr-width-xl;
+    }
+    @include margin-top-bottom($gutter * 2);
+    border-top: $hr-border;
+    width: $hr-width;
+}
