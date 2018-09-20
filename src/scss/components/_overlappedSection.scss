@@ -60,8 +60,9 @@
     }
 
     padding: $gutter / 2;
+    padding-bottom: ($gutter / 2) - 16px;
     z-index: $zindex-sticky;
-    
+
     &-1 {
       @include media-breakpoint-up(md) {
         padding-bottom: 0;
