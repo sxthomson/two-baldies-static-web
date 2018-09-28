@@ -25,7 +25,11 @@ const ASSET_PATH = '/';
 
 const config = {
   entry: {
-    app: ['./src/js/app.js', './src/scss/app.scss']
+    app: [
+      './src/js/app.js',
+      './src/scss/app.scss',
+      'font-awesome-loader!./font-awesome.config.js'
+    ]
   },
   output: {
     filename: 'js/[name].js',
@@ -60,7 +64,8 @@ const config = {
         }]
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        // Fonts in the fonts folder only!
+        test: /\.(eot|woff|woff2|ttf|svg)(\?\S*)?$/,
         include: path.resolve(__dirname, 'src/fonts'),
         use: [{
           loader: 'url-loader',
@@ -71,6 +76,28 @@ const config = {
           }
         }]
       },
+      {
+        // For font-awesome / scss embedded fonts
+        test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        include: [
+          path.resolve(__dirname, 'src/scss'),
+          path.resolve(__dirname, 'node_modules/font-awesome'),
+        ],
+        use: [{
+           loader: 'file-loader',
+           options: {
+             name: 'fonts/[name].[ext]',
+             publicPath: ASSET_PATH
+           }
+         }]
+      },
+      {
+        test: /font-awesome\.config\.js/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'font-awesome-loader' }
+        ]
+      }
     ]
   },
   devServer: {

@@ -17,7 +17,7 @@
 @import 'base/mixins';
 
 /* Bootstrap */
-@import 'bootstrap/bootstrap';
+@import 'dependencies/bootstrap';
 
 /* Animated Ticker */
 @import 'components/ticker';
@@ -44,3 +44,5 @@
 @import 'components/logoThematicBreak';
 
 @import 'components/horizontalRule';
+
+@import 'components/contact';

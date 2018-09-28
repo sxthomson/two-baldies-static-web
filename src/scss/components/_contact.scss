@@ -1,0 +1,12 @@
+@import '../base/vars';
+
+.contact {
+    margin-bottom: $contact-margin-bottom;
+}
+.social {
+    margin-top: $gutter / 2;
+    .social-link {        
+        font-size: $social-icon-font-size;
+        padding: $social-icon-padding $social-icon-padding/2;
+    }    
+}

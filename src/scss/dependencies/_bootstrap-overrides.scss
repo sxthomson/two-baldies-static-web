@@ -1,0 +1,20 @@
+@import '../base/vars';
+
+$enable-shadows: true;
+$grid-gutter-width: $gutter;
+$font-family-sans-serif: "Avenir-Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$enable-rounded: false;
+
+$enable-shadows: true;
+$grid-gutter-width: $gutter;
+$font-family-sans-serif: "Avenir-Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$enable-rounded: false;
+
+$body-color: $text-color;
+
+$link-color:                $text-color;
+$link-decoration:           none;
+$link-hover-color:          darken($link-color, 15%);
+$link-hover-decoration:     none;
+
+$font-size-base: 1.25rem
