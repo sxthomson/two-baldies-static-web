@@ -12,6 +12,7 @@ const localServer = {
 
 const path = require('path');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require('webpack-uglifyes-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -77,6 +78,7 @@ const config = {
     port: localServer.proxyPort
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new ExtractTextPlugin('css/[name].css'),
     new BrowserSyncPlugin({
         // browse to http://localhost:3000/ during development
