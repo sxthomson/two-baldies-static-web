@@ -36,6 +36,7 @@
     "instafeed.js": "^1.4.1",
     "jquery": "^3.2.1",
     "lodash": "^4.17.10",
+    "name-all-modules-plugin": "^1.0.1",
     "node-sass": "^4.9.0",
     "optimize-css-assets-webpack-plugin": "^2.0.0",
     "popper.js": "^1.14.3",

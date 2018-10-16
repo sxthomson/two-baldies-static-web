@@ -18,6 +18,7 @@ const UglifyJSPlugin = require('webpack-uglifyes-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NameAllModulesPlugin = require('name-all-modules-plugin');
 
 const DIST_PATH = path.resolve(__dirname, 'dist');
 
@@ -29,10 +30,11 @@ const config = {
       './src/js/app.js',
       './src/scss/app.scss',
       'font-awesome-loader!./font-awesome.config.js'
-    ]
+    ],
+    vendor: ['jQuery']
   },
   output: {
-    filename: 'js/[name].js',
+    filename: 'js/[name].[chunkhash:6].js',
     path: DIST_PATH
   },
   module: {
@@ -86,7 +88,7 @@ const config = {
         use: [{
            loader: 'file-loader',
            options: {
-             name: 'fonts/[name].[ext]',
+             name: 'fonts/[name].[hash].[ext]',
              publicPath: ASSET_PATH
            }
          }]
@@ -105,8 +107,23 @@ const config = {
     port: localServer.proxyPort
   },
   plugins: [
+    new webpack.NamedModulesPlugin(),
+        new webpack.NamedChunksPlugin((chunk) => {
+            if (chunk.name) {
+                return chunk.name;
+            }
+            return chunk.modules.map(m => path.relative(m.context, m.request)).join("_");
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: Infinity
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'runtime'
+        }),
+        new NameAllModulesPlugin(),
     new CleanWebpackPlugin(['dist']),
-    new ExtractTextPlugin('css/[name].css'),
+    new ExtractTextPlugin('css/[name].[chunkhash:6].css'),
     new BrowserSyncPlugin({
         // browse to http://localhost:3000/ during development
         host: localServer.path,
@@ -140,9 +157,8 @@ const config = {
     new HtmlWebpackPlugin({ // Also generate a test.html and inject in our assets
       filename: 'index.html',
       template: 'src/index.html',
-      hash: true, //Add hash to links for browser cache invalidation on update
       chunksSortMode: 'manual', // Use order of array below
-      chunks: ['app']
+      chunks: ['vendor','app']
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
