@@ -31,7 +31,7 @@ const config = {
       './src/scss/app.scss',
       'font-awesome-loader!./font-awesome.config.js'
     ],
-    vendor: ['jQuery']
+    vendor: ['jQuery', 'bootstrap', 'lodash']
   },
   output: {
     filename: 'js/[name].[chunkhash:6].js',
@@ -158,7 +158,7 @@ const config = {
       filename: 'index.html',
       template: 'src/index.html',
       chunksSortMode: 'manual', // Use order of array below
-      chunks: ['vendor','app']
+      chunks: ['runtime', 'vendor', 'app']
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
