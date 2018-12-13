@@ -108,20 +108,21 @@ const config = {
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
-        new webpack.NamedChunksPlugin((chunk) => {
-            if (chunk.name) {
-                return chunk.name;
-            }
-            return chunk.modules.map(m => path.relative(m.context, m.request)).join("_");
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: Infinity
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'runtime'
-        }),
-        new NameAllModulesPlugin(),
+    new webpack.NamedChunksPlugin((chunk) => {
+        if (chunk.name) {
+            return chunk.name;
+        }
+        return chunk.modules.map(m => path.relative(m.context, m.request)).join("_");
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: ({ resource }) => /node_modules/.test(resource),
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'runtime',
+        minChunks: Infinity
+    }),
+    new NameAllModulesPlugin(),
     new CleanWebpackPlugin(['dist']),
     new ExtractTextPlugin('css/[name].[chunkhash:6].css'),
     new BrowserSyncPlugin({
@@ -154,7 +155,7 @@ const config = {
       }
 
     ),
-    new HtmlWebpackPlugin({ // Also generate a test.html and inject in our assets
+    new HtmlWebpackPlugin({ // Also generate an index.html and inject in our assets
       filename: 'index.html',
       template: 'src/index.html',
       chunksSortMode: 'manual', // Use order of array below
