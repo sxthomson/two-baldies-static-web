@@ -21,12 +21,14 @@
     </nav>
 
     <div class="background-container">
-        <img src="<%=require('./images/background-jars-640.png')%>" srcset="<%=require('./images/background-jars-640.png')%> 640w,
-            http://placehold.it/768x460 768w,
-            <%=require('./images/background-jars-1024.png')%> 1024w,
-            <%=require('./images/background-jars-1366.png')%> 1366w,
-            <%=require('./images/background-jars-1600.png')%> 1600w,
-            <%=require('./images/background-jars-1920.png')%> 1920w" sizes="100vw" alt="A product image" class="img-fluid" />
+        <img src="<%=require('./images/header/header_640.jpg')%>" 
+            srcset="<%=require('./images/header/header_640.jpg')%> 640w,
+                <%=require('./images/header/header_768.jpg')%> 768w,
+                <%=require('./images/header/header_1024.jpg')%> 1024w,
+                <%=require('./images/header/header_1366.jpg')%> 1366w,
+                <%=require('./images/header/header_1600.jpg')%> 1600w,
+                <%=require('./images/header/header_1920.jpg')%> 1920w"
+            sizes="100vw" alt="A product image" class="img-fluid" />
     </div>
 
     <main class="background-push-down" role="main">
@@ -39,16 +41,13 @@
         <div class="product-container">
             <div class="product-item background-product-chocolate">
                 <img class="product-image"
-                    src="http://placehold.it/300x300"
-                    srcset="http://placehold.it/300x300 300w,
-                        http://placehold.it/350x350 320w,
-                        http://placehold.it/400x400 400w,
-                        http://placehold.it/450x450 450w,
-                        http://placehold.it/500x500 500w,
-                        http://placehold.it/600x600 600w,
-                        http://placehold.it/800x800 800w,
-                        http://placehold.it/1200x1200 1200w"
-                    sizes="(min-width: 1200px) calc((100vw - 120px) / 5),
+                    src="<%=require('./images/products/chocolate_300.jpg')%>" 
+                    srcset="<%=require('./images/products/chocolate_300.jpg')%> 300w,
+                        <%=require('./images/products/chocolate_360.jpg')%> 360w,
+                        <%=require('./images/products/chocolate_500.jpg')%> 500w,
+                        <%=require('./images/products/chocolate_600.jpg')%> 600w,
+                        <%=require('./images/products/chocolate_720.jpg')%> 720w"
+                    sizes="(min-width: 1200px) calc((100vw - 120px) / 4),
                         (min-width: 992px) 400px,
                         300px"
                     alt="Super Crunchy Dark Chocolate Peanut Butter Jar">
@@ -58,16 +57,13 @@
             </div>
             <div class="product-item background-product-classic">
                 <img class="product-image"
-                    src="http://placehold.it/300x300"
-                    srcset="http://placehold.it/300x300 300w,
-                        http://placehold.it/350x350 320w,
-                        http://placehold.it/400x400 400w,
-                        http://placehold.it/450x450 450w,
-                        http://placehold.it/500x500 500w,
-                        http://placehold.it/600x600 600w,
-                        http://placehold.it/800x800 800w,
-                        http://placehold.it/1200x1200 1200w"
-                    sizes="(min-width: 1200px) calc((100vw - 120px) / 5),
+                    src="<%=require('./images/products/roasted_300.jpg')%>" 
+                    srcset="<%=require('./images/products/roasted_300.jpg')%> 300w,
+                        <%=require('./images/products/roasted_360.jpg')%> 360w,
+                        <%=require('./images/products/roasted_500.jpg')%> 500w,
+                        <%=require('./images/products/roasted_600.jpg')%> 600w,
+                        <%=require('./images/products/roasted_720.jpg')%> 720w"
+                    sizes="(min-width: 1200px) calc((100vw - 120px) / 4),
                         (min-width: 992px) 400px,
                         300px"
                     alt="Super Crunchy Classic Roasted Peanut Butter Jar">
@@ -77,16 +73,13 @@
             </div>
             <div class="product-item background-product-fruit">
                 <img class="product-image"
-                    src="http://placehold.it/300x300"
-                    srcset="http://placehold.it/300x300 300w,
-                        http://placehold.it/350x350 320w,
-                        http://placehold.it/400x400 400w,
-                        http://placehold.it/450x450 450w,
-                        http://placehold.it/500x500 500w,
-                        http://placehold.it/600x600 600w,
-                        http://placehold.it/800x800 800w,
-                        http://placehold.it/1200x1200 1200w"
-                    sizes="(min-width: 1200px) calc((100vw - 120px) / 5),
+                    src="<%=require('./images/products/fruitnut_300.jpg')%>" 
+                    srcset="<%=require('./images/products/fruitnut_300.jpg')%> 300w,
+                        <%=require('./images/products/fruitnut_360.jpg')%> 360w,
+                        <%=require('./images/products/fruitnut_500.jpg')%> 500w,
+                        <%=require('./images/products/fruitnut_600.jpg')%> 600w,
+                        <%=require('./images/products/fruitnut_720.jpg')%> 720w"
+                    sizes="(min-width: 1200px) calc((100vw - 120px) / 4),
                         (min-width: 992px) 400px,
                         300px"
                     alt="Fruit &amp; Nut Peanut Butter Jar">
@@ -96,40 +89,18 @@
             </div>
             <div class="product-item background-product-harissa">
                 <img class="product-image"
-                    src="http://placehold.it/300x300"
-                    srcset="http://placehold.it/300x300 300w,
-                        http://placehold.it/350x350 320w,
-                        http://placehold.it/400x400 400w,
-                        http://placehold.it/450x450 450w,
-                        http://placehold.it/500x500 500w,
-                        http://placehold.it/600x600 600w,
-                        http://placehold.it/800x800 800w,
-                        http://placehold.it/1200x1200 1200w"
-                    sizes="(min-width: 1200px) calc((100vw - 120px) / 5),
+                    src="<%=require('./images/products/harissa_300.jpg')%>" 
+                    srcset="<%=require('./images/products/harissa_300.jpg')%> 300w,
+                        <%=require('./images/products/harissa_360.jpg')%> 360w,
+                        <%=require('./images/products/harissa_500.jpg')%> 500w,
+                        <%=require('./images/products/harissa_600.jpg')%> 600w,
+                        <%=require('./images/products/harissa_720.jpg')%> 720w"
+                    sizes="(min-width: 1200px) calc((100vw - 120px) / 4),
                         (min-width: 992px) 400px,
                         300px"
                     alt="Harissa Spiced Peanut Butter Jar">
                 <div class="product-title">
                     <p>Harissa</p>
-                </div>
-            </div>
-            <div class="product-item background-product-bbq">
-                <img class="product-image"
-                    src="http://placehold.it/300x300"
-                    srcset="http://placehold.it/300x300 300w,
-                        http://placehold.it/350x350 320w,
-                        http://placehold.it/400x400 400w,
-                        http://placehold.it/450x450 450w,
-                        http://placehold.it/500x500 500w,
-                        http://placehold.it/600x600 600w,
-                        http://placehold.it/800x800 800w,
-                        http://placehold.it/1200x1200 1200w"
-                    sizes="(min-width: 1200px) calc((100vw - 120px) / 5),
-                        (min-width: 992px) 400px,
-                        300px"
-                    alt="Brown Sugar Barbeque Flavoured Peanut Butter Jar">
-                <div class="product-title">
-                    <p>Brown Sugar Barbeque</p>
                 </div>
             </div>
         </div>
@@ -163,7 +134,25 @@
 
         <div class="overlapped-section-container">
             <div class="overlapped-section section-image">
-                <img class="image" src="http://placehold.it/707x535">
+                <img class="image" 
+                    src="<%=require('./images/overlapped/overlapped_500.jpg')%>" 
+                    srcset="<%=require('./images/overlapped/overlapped_500.jpg')%> 500w,
+                        <%=require('./images/overlapped/overlapped_640.jpg')%> 640w,
+                        <%=require('./images/overlapped/overlapped_672.jpg')%> 672w,
+                        <%=require('./images/overlapped/overlapped_787.jpg')%> 787w,
+                        <%=require('./images/overlapped/overlapped_945.jpg')%> 945w,
+                        <%=require('./images/overlapped/overlapped_1000.jpg')%> 1000w,
+                        <%=require('./images/overlapped/overlapped_1280.jpg')%> 1289w,
+                        <%=require('./images/overlapped/overlapped_1344.jpg')%> 1344w,
+                        <%=require('./images/overlapped/overlapped_1574.jpg')%> 1574w,
+                        <%=require('./images/overlapped/overlapped_1890.jpg')%> 18904w"
+                        sizes="(min-width: 1200px) calc((100vw - 120px) / 5),
+                        (min-width: 992px) 400px,
+                        300px"
+                    sizes="(min-width: 992px) 65vw,
+                    (min-width: 768px) 85vw,
+                    100vw"
+                    alt="Harissa peanut butter served with apple">
             </div>
             <div class="overlapped-section section-content section-content-1">
                 <p>Two Baldies want one thing -- to give you peanut butter like you've never known</p>
