@@ -31,7 +31,7 @@ const config = {
       './src/scss/app.scss',
       'font-awesome-loader!./font-awesome.config.js'
     ],
-    vendor: ['jQuery', 'bootstrap', 'lodash']
+    vendor: ['jquery', 'bootstrap', 'lodash']
   },
   output: {
     filename: 'js/[name].[chunkhash:6].js',
@@ -153,7 +153,6 @@ const config = {
         // and let Webpack Dev Server take care of this
         reload: false
       }
-
     ),
     new HtmlWebpackPlugin({ // Also generate an index.html and inject in our assets
       filename: 'index.html',
