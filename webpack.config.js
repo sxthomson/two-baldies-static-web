@@ -21,7 +21,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NameAllModulesPlugin = require('name-all-modules-plugin');
 
 const DIST_PATH = path.resolve(__dirname, 'dist');
-
+console.log(DIST_PATH);
 const ASSET_PATH = '/';
 
 const config = {
@@ -35,7 +35,8 @@ const config = {
   },
   output: {
     filename: 'js/[name].[chunkhash:6].js',
-    path: DIST_PATH
+    path: DIST_PATH,
+    publicPath: "/",
   },
   module: {
     rules: [{
