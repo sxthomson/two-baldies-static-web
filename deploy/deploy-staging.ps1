@@ -1,7 +1,5 @@
 gsutil -m rsync -r -d "../dist" gs://two-baldies-staging
 
-SetMetadata "Content-Type" "text/html" "two-baldies-staging" "**.html"
-
 gsutil setmeta -m -h "Content-Type:text/html" gs://two-baldies-staging/*.html
 gsutil setmeta -m -h "Cache-Control:private, max-age=0, no-transform" gs://two-baldies-staging/*.html
 
