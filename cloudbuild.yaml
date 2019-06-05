@@ -4,6 +4,10 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'production']
   - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['-m', 'cp', '-r', 'dist', 'gs://$STORAGE_ACCOUNT_NAME/$REPO_NAME/$BRANCH_NAME/$SHORT_SHA/']
+    env:
+      - 'STORAGE_ACCOUNT_NAME=two-baldies-artifacts'
+  - name: 'gcr.io/cloud-builders/gsutil'
     entrypoint: 'bash'
     args: 
     - '-c'
@@ -12,7 +16,3 @@ steps:
       echo "Pushed to staging bucket"
     env:
       - 'STORAGE_ACCOUNT_NAME=two-baldies-staging'
-artifacts:
-  objects:
-    location: 'gs://two-baldies-artifacts/$PROJECT_ID/$REPO_NAME/$BRANCH_NAME-$SHORT_SHA/'
-    paths: ['dist/**']
