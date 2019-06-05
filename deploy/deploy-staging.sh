@@ -1,4 +1,4 @@
-gsutil -m rsync -r -d "/dist/" gs://$STORAGE_ACCOUNT_NAME
+gsutil -m rsync -r -d "/dist" gs://$STORAGE_ACCOUNT_NAME
 
 SetMetadata "Content-Type" "text/html" "$STORAGE_ACCOUNT_NAME" "**.html"
 
