@@ -3,4 +3,12 @@ steps:
     args: ['install']
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'production']
-    dir: './'
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args: 
+    - '-c'
+    - |
+      [[ "$BRANCH_NAME" != "master" ]] && bash deploy/deploy-staging.sh || return 0
+      echo "Pushed to staging bucket"
+    env:
+      - 'STORAGE_ACCOUNT_NAME=two-baldies-staging'
