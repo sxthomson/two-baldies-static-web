@@ -10,7 +10,6 @@ steps:
     args: 
     - '-c'
     - |
-      [[ "$BRANCH_NAME" != "master" ]] && bash deploy/deploy-staging.sh || return 0
-      echo "Pushed to staging bucket"
+      [[ "$BRANCH_NAME" != "master" ]] && bash deploy/deploy-to-storage.sh || return 0
     env:
       - 'STORAGE_ACCOUNT_NAME=two-baldies-staging'
