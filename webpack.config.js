@@ -100,6 +100,10 @@ const config = {
           { loader: 'style-loader' },
           { loader: 'font-awesome-loader' }
         ]
+      },
+      {
+        test: /\.(html)$/,
+        use: ['html-loader-srcset']
       }
     ]
   },
