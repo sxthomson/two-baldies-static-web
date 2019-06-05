@@ -4,8 +4,10 @@ gsutil -m rsync -r -d "dist" gs://$STORAGE_ACCOUNT_NAME
 
 gsutil web set -m index.html gs://$STORAGE_ACCOUNT_NAME
 
-gsutil setmeta -m -h "Content-Type:text/html" gs://$STORAGE_ACCOUNT_NAME/**.html
-gsutil setmeta -m -h "Cache-Control:private, max-age=0, no-transform" gs://$STORAGE_ACCOUNT_NAME/**.html
+
+gsutil -m setmeta -h "Content-Type:text/html" \
+  -h "Cache-Control:private, max-age=0, no-transform" \
+  -h "Content-Disposition" gs://$STORAGE_ACCOUNT_NAME/**.html
 
 gsutil setmeta -m -h "Content-Type:image/png" gs://$STORAGE_ACCOUNT_NAME/**.png
 gsutil setmeta -m -h "Cache-Control:public, max-age=31536000" gs://$STORAGE_ACCOUNT_NAME/**.png
