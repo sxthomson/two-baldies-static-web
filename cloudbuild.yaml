@@ -12,3 +12,7 @@ steps:
       echo "Pushed to staging bucket"
     env:
       - 'STORAGE_ACCOUNT_NAME=two-baldies-staging'
+artifacts:
+  objects:
+    location: 'gs://two-baldies-artifacts/$PROJECT_ID/$REPO_NAME/$BRANCH_NAME-$SHORT_SHA/'
+    paths: ['dist/**']
