@@ -4,9 +4,7 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'production']
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['-m', 'cp', '-r', 'dist', 'gs://$STORAGE_ACCOUNT_NAME/$REPO_NAME/$BRANCH_NAME/$SHORT_SHA/']
-    env:
-      - 'STORAGE_ACCOUNT_NAME=two-baldies-artifacts'
+    args: ['-m', 'cp', '-r', 'dist', 'gs://two-baldies-artifacts/$REPO_NAME/$BRANCH_NAME/$SHORT_SHA/']
   - name: 'gcr.io/cloud-builders/gsutil'
     entrypoint: 'bash'
     args: 
