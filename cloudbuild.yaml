@@ -3,4 +3,13 @@ steps:
     args: ['install']
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'production']
-    dir: './'
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['-m', 'cp', '-r', 'dist', 'gs://two-baldies-artifacts/$REPO_NAME/$BRANCH_NAME/$SHORT_SHA/']
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args: 
+    - '-c'
+    - |
+      [[ "$BRANCH_NAME" != "master" ]] && bash deploy/deploy-to-storage.sh || return 0
+    env:
+      - 'STORAGE_ACCOUNT_NAME=two-baldies-staging'
